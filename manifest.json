@@ -1,0 +1,19 @@
+{
+  "name": "Open Sports TV",
+  "short_name": "Sports TV",
+  "description": "A free public sports TV player for open sports channels and official sports links.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07130d",
+  "theme_color": "#07130d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
