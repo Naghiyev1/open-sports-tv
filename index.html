@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Open Sports TV</title>
+  <meta
+    name="description"
+    content="A free public sports TV player for open sports channels and official sports links."
+  />
+  <meta name="theme-color" content="#07130d" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="stylesheet" href="./style-v1.css?v=1" />
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="scoreboard">
+      <section>
+        <p class="eyebrow">Free public sports TV · official links</p>
+        <h1>Open Sports TV</h1>
+        <p class="subtitle">
+          A lightweight sports-only live TV app for public sports channels, open IPTV streams,
+          and official sports viewing links. No backend, no login, no paid services.
+        </p>
+      </section>
+
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle stadium mode">
+        Stadium Mode
+      </button>
+    </header>
+
+    <section class="player-panel" aria-label="Sports TV player">
+      <div class="screen-frame">
+        <video id="videoPlayer" controls playsinline></video>
+        <iframe
+          id="externalFrame"
+          class="external-frame"
+          title="Official sports page"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <div class="screen-overlay">
+          <span>LIVE</span>
+          <strong id="screenLabel">SELECT CHANNEL</strong>
+        </div>
+      </div>
+
+      <div class="player-bar">
+        <div id="playerLogo" class="player-logo">ST</div>
+        <div class="now-playing">
+          <strong id="currentChannel">Nothing playing</strong>
+          <span id="currentMeta">Choose a channel to start watching</span>
+        </div>
+
+        <button id="playerFavoriteButton" class="icon-button" type="button" disabled aria-label="Toggle favourite">★</button>
+        <button id="stopButton" class="stop-button" type="button" disabled>Stop</button>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Sports TV controls">
+      <input id="searchInput" type="search" placeholder="Search channel, sport, country..." />
+
+      <select id="sourceSelect" aria-label="Choose source">
+        <option value="sports" selected>Sports · IPTV-org</option>
+        <option value="football">Football/Soccer · IPTV-org</option>
+        <option value="motorsport">Motorsport · IPTV-org</option>
+        <option value="combat">Combat/Fight · IPTV-org</option>
+        <option value="outdoor">Outdoor/Extreme · IPTV-org</option>
+        <option value="official">Official Sports Links</option>
+      </select>
+
+      <button id="searchButton" type="button">Search</button>
+    </section>
+
+    <section class="filter-pills" aria-label="Quick filters">
+      <button class="pill active" type="button" data-filter="">All</button>
+      <button class="pill" type="button" data-filter="__favorites">Favorites</button>
+      <button class="pill" type="button" data-filter="__recent">Recently Watched</button>
+      <button class="pill" type="button" data-filter="football">Football</button>
+      <button class="pill" type="button" data-filter="soccer">Soccer</button>
+      <button class="pill" type="button" data-filter="motorsport">Motorsport</button>
+      <button class="pill" type="button" data-filter="fight">Fight</button>
+      <button class="pill" type="button" data-filter="basketball">Basketball</button>
+      <button class="pill" type="button" data-filter="news">News</button>
+      <button class="pill" type="button" data-filter="extreme">Extreme</button>
+    </section>
+
+    <div class="status-bar">
+      <span id="statusText">Loading sports channels...</span>
+      <strong id="activeFilterLabel">Sports · IPTV-org</strong>
+    </div>
+
+    <section class="stats-strip" aria-label="Stats">
+      <div>
+        <strong id="channelCount">0</strong>
+        <span>channels</span>
+      </div>
+      <div>
+        <strong id="favoriteCount">0</strong>
+        <span>favorites</span>
+      </div>
+      <div>
+        <strong>FREE</strong>
+        <span>public only</span>
+      </div>
+    </section>
+
+    <main id="channelsGrid" class="channels-grid" aria-live="polite"></main>
+  </main>
+
+  <script src="./app-v1.js?v=1"></script>
+</body>
+</html>
